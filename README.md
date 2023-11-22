@@ -8,7 +8,7 @@ The meet app is a serverless, progressive web app (PWA) built with React using t
 
 ### Feature 1: Filter Events By City
 
-#### User Stories
+#### User Story
 
     As an event attendee,
     I should be able to filter events by city,
