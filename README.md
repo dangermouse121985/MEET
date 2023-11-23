@@ -78,7 +78,7 @@ The meet app is a serverless, progressive web app (PWA) built with React using t
     Given the user has opened the events app
     When they choose to customize the number of events displayed
     And they specify a new number, such as 20
-    Then the list of events should display 20 events
+    Then the list of events should display a maximum of 20 events
 
 ### Feature 4: Use the App When Offline
 
