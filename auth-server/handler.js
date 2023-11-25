@@ -37,3 +37,84 @@ module.exports.getAuthURL = async () => {
     }),
   };
 };
+
+module.exports.getAccessToken = async (event) => {
+  // Decode authorization code extracted from the URL query
+  const code = decodeURIComponent(`${event.pathParameters.code}`);
+
+  return new Promise((resolve, reject) => {
+    /**
+     * Exchange authorization code for access token with a "calback after the exchange,
+     * The callback in this case is an arrow function with the results as parameters: "error" and "response"
+     */
+    oAuth2Client.getToken(code, (error, response) => {
+      if (error) {
+        return reject(error);
+      }
+      return resolve(response);
+    });
+  })
+  .then((results) => {
+    // Resoond with OAuth token
+    return {
+      statusCode: 200,
+      headers: {
+        'Access-Control-Allow-Origin': '*',
+        'Access-Control-Allow-Credentials': true,
+      },
+      body: JSON.stringify(results)
+    };
+  })
+  .catch((error) => {
+    // Handle Error
+    return {
+      statusCode: 500,
+      body: JSON.stringify(error)
+    };
+  });
+};
+
+module.exports.getCalendarEvents = async (event) => {
+  const access_token = decodeURIComponent(`${event.pathParameters.access_token}`);
+
+  oAuth2Client.setCredentials({ access_token });
+
+  return new Promise((resolve, reject) => {
+    calendar.events.list(
+      {
+        calendarId: CALENDAR_ID,
+        auth: oAuth2Client,
+        timeMin: new Date().toISOString(),
+        singleEvents: true,
+        orderBy: "startTime",
+      },
+        (error, response) => {
+          if (error) {
+            return reject(error);
+          } 
+          return resolve(response);
+        }
+      );
+    })
+    .then((results) => {
+      return {
+        statusCode: 200,
+        headers: {
+          'Access-Control-Allow-Origin': '*',
+          'Access-Control-Allow-Credentials': true,
+        },
+        body: JSON.stringify({ events: results.data.items })
+      };
+    })
+    .catch((error) => {
+      return {
+        statusCode: 500,
+        body: JSON.stringify(error)
+      };
+  });
+}
+
+/**
+ * GET - https://2dqc5ocp1i.execute-api.us-east-1.amazonaws.com/dev/api/get-auth-url
+ * GET - https://2dqc5ocp1i.execute-api.us-east-1.amazonaws.com/dev/api/token/{code}
+ */
