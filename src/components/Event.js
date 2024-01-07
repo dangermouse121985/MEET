@@ -17,10 +17,10 @@ const Event = ({ event }) => {
             {showDetails ? (
                 <>
                     <p className="event-details" role='event-details'>{event.description}</p>
-                    <button className="hide-details" onClick={toggleDetails} role="hide-details"></button>
+                    <button className="hide-details" onClick={toggleDetails} role="hide-details">Hide Details</button>
                 </>
             ) :
-                <button className="show-details" onClick={toggleDetails} role="show-details"></button>}
+                <button className="show-details" onClick={toggleDetails} role="show-details">Show Details</button>}
 
 
         </li>

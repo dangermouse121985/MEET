@@ -1,6 +1,6 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
-const CitySearch = ({ allLocations }) => {
+const CitySearch = ({ allLocations, setCurrentCity }) => {
     const [showSuggestions, setShowSuggestions] = useState(false);
     const [query, setQuery] = useState("");
     const [suggestions, setSuggestions] = useState([]);
@@ -18,7 +18,12 @@ const CitySearch = ({ allLocations }) => {
         const value = event.target.textContent;
         setQuery(value);
         setShowSuggestions(false); // to hide the list
+        setCurrentCity(value);
     }
+
+    useEffect(() => {
+        setSuggestions(allLocations);
+    }, [`${allLocations}`]);
 
     return (
         <div id='city-search'>
@@ -35,8 +40,8 @@ const CitySearch = ({ allLocations }) => {
                     {suggestions.map((suggestion) => {
                         return <li key={suggestion} onClick={handleItemClicked} >{suggestion}</li>
                     })}
-                    <li key='See all Cities' onClick={handleItemClicked} >
-                        <b>See all Cities</b>
+                    <li key='See all cities' onClick={handleItemClicked} >
+                        <b>See all cities</b>
                     </li>
                 </ul>
                 : null
