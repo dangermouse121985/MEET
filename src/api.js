@@ -21,7 +21,7 @@ export const getEvents = async () => {
     return mockData;
 }
 
-/* export const getAccessToken = aync () => {
+export const getAccessToken = aync() => {
     const accessToken = localStorage.getItem('access_token');
     const tokenCheck = accessToken && (await checkToken(accessToken));
 
@@ -31,7 +31,7 @@ export const getEvents = async () => {
         const code = await searchParams.get("code");
         if (!code) {
             const response = await fetch(
-                "YOUR_SERVERLESS_GET_AUTH_URL_ENDPOINT"
+                "https://2dqc5ocp1i.execute-api.us-east-1.amazonaws.com/dev/api/get-auth-url"
             );
             const result = await response.json();
             const { authUrl } = result;
@@ -40,4 +40,4 @@ export const getEvents = async () => {
         return code && getToken(code);
     }
     return accessToken
-}; */
+};
