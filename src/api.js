@@ -40,7 +40,7 @@ export const getEvents = async () => {
             return result.events;
         } else return null;
     }
-}
+};
 
 /**
  * This funcrtion removes the code from the URL
@@ -71,7 +71,7 @@ const getToken = async (code) => {
     return access_token;
 }
 
-export const getAccessToken = aync() => {
+export const getAccessToken = async () => {
     const accessToken = localStorage.getItem('access_token');
     const tokenCheck = accessToken && (await checkToken(accessToken));
 
