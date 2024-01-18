@@ -25,7 +25,7 @@ const checkToken = async (accessToken) => {
  * This function will fetch the list of all events
  */
 export const getEvents = async () => {
-    if (windows.location.href.startsWith('http://localhost')) {
+    if (window.location.href.startsWith('http://localhost')) {
         return mockData;
     }
 
@@ -46,7 +46,7 @@ export const getEvents = async () => {
  * This funcrtion removes the code from the URL
  */
 const removeQuery = () => {
-    let newurll
+    let newurl;
     if (window.history.pushState && window.location.pathname) {
         newurl =
             window.location.protocol +
