@@ -33,8 +33,42 @@ export const getEvents = async () => {
 
     if (token) {
         removeQuery();
-        const url = ""
+        const url = "https://2dqc5ocp1i.execute-api.us-east-1.amazonaws.com/dev/api/get-events" + "/" + token;
+        const response = await fetch(url);
+        const result = await response.json();
+        if (result) {
+            return result.events;
+        } else return null;
     }
+}
+
+/**
+ * This funcrtion removes the code from the URL
+ */
+const removeQuery = () => {
+    let newurll
+    if (window.history.pushState && window.location.pathname) {
+        newurl =
+            window.location.protocol +
+            "//" +
+            window.location.host +
+            window.location.pathname;
+        window.history.pushState("", "", newurl);
+    } else {
+        newurl = window.location.protocol + "//" + window.location.host;
+        window.history.pushState("", "", newurl)
+    }
+}
+
+const getToken = async (code) => {
+    const encodeCode = encodeURIComponent(code);
+    const response = await fetch(
+        'https://2dqc5ocp1i.execute-api.us-east-1.amazonaws.com/dev/api/token' + '/' + encodeCode
+    );
+    const { access_token } = await response.json();
+    access_token && localStorage.setItem("access_token", access_token);
+
+    return access_token;
 }
 
 export const getAccessToken = aync() => {
@@ -55,5 +89,5 @@ export const getAccessToken = aync() => {
         }
         return code && getToken(code);
     }
-    return accessToken
+    return accessToken;
 };
