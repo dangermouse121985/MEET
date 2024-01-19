@@ -4,7 +4,7 @@ import { render } from '@testing-library/react';
 import App from '../App';
 import userEvent from '@testing-library/user-event';
 import { getEvents } from '../api';
-import { within } from '@testing-library/react';
+import { within, waitFor } from '@testing-library/react';
 
 describe('<App /> component', () => {
     let AppDOM;
@@ -52,6 +52,20 @@ describe('<App /> integration', () => {
         expect(allRenderedEventItems.length).toBe(berlinEvents.length);
         allRenderedEventItems.forEach(event => {
             expect(event.textContent).toContain("Berlin, Germany");
+        })
+    })
+
+
+    test('Render corrent number of events based on user input', async () => {
+        const user = userEvent.setup();
+        const numEventsTextbox = AppDOM.querySelector('#number-of-events');
+        await user.type(numEventsTextbox, '{backspace}{backspace}10');
+
+        const EventListDom = AppDOM.querySelector('#event-list');
+
+        await waitFor(() => {
+            const allRenderedEventItems = within(EventListDom).queryAllByRole('listitem');
+            expect(allRenderedEventItems.length).toBe(10);
         })
     })
 })
