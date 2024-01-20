@@ -77,7 +77,8 @@ input[type="number"] {
   position: relative;
 }
 
-.details-btn {
+.show-details,
+.hide-details {
   position: absolute;
   right: 5px;
   bottom: 5px;
