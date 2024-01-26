@@ -42,7 +42,6 @@ defineFeature(feature, test => {
 
         and('they specify a new number, such as 20', async () => {
             const user = userEvent.setup();
-            const numberOfEventsDOM = numberOfEventsComponent.firstChild;
             const AppDOM = AppComponent.container.firstChild;
             const numEventsTexbox = AppDOM.querySelector('#number-of-events');
             await user.type(numEventsTexbox, '{backspace}{backspace}20');
