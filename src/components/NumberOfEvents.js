@@ -6,7 +6,10 @@ const NumberOfEvents = ({ setCurrentNOE }) => {
     }
 
     return (
-        <input id="number-of-events" type="textbox" inputMode="numeric" defaultValue='32' onChange={handleInputChanged}></input>
+        <>
+            <label for='number-of-events'>Number of Events</label><br></br>
+            <input id="number-of-events" type="textbox" inputMode="numeric" defaultValue='32' onChange={handleInputChanged}></input>
+        </>
     )
 }
 

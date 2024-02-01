@@ -1,7 +1,26 @@
+
 @import url(https://fonts.googleapis.com/css?family=Roboto:500);
+
+:root {
+  --primary-color: #2B3990;
+  --background-color: #B7D5D4;
+  --event-color: #488286;
+}
+
+body {
+  background-color: var(--background-color);
+}
+
+svg {
+  width: 250px;
+  margin: 20px 50px 50px 50px;
+}
+
 .App {
   text-align: center;
   padding: 2% 5%;
+  width: 90%;
+  margin: 0 auto;
 }
 
 .App * {
@@ -55,7 +74,7 @@ input[type="number"] {
 .suggestions > li {
   text-align: left;
   padding: 8px 6px 8px 10px;
-  background-color: #eee;
+  background-color: #77878B;
   cursor: default;
 }
 
@@ -69,10 +88,10 @@ input[type="number"] {
 }
 
 .event {
-  padding: 10px 10px 35px;
-  margin-bottom: 10px;
+  background-color: var(--event-color);
+  padding: 10px 200px 35px 20px;
+  margin-bottom: 20px;
   text-align: left;
-  border: 1px solid #ccc;
   border-radius: 4px;
   position: relative;
 }
@@ -82,8 +101,21 @@ input[type="number"] {
   position: absolute;
   right: 5px;
   bottom: 5px;
-  padding: 5px 8px;
+  padding: 10px 12px;
   border-radius: 4px;
   outline: none;
   cursor: pointer;
+  border: none;
+  color: #fff;
+  background-color: var(--primary-color);
+  margin: 10px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+@media only screen and (max-width: 600px) {
+  .event {
+    padding-right: 20px;
+  }
+  
 }
