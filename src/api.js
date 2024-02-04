@@ -35,8 +35,6 @@ export const getEvents = async () => {
         removeQuery();
         const url = 'https://2dqc5ocp1i.execute-api.us-east-1.amazonaws.com/dev/api/get-events/' + token;
         const response = await fetch(url);
-        console.log(url);
-        console.log(response);
         const result = await response.json();
         if (result) {
             return result.events;
@@ -76,6 +74,8 @@ const getToken = async (code) => {
 export const getAccessToken = async () => {
     const accessToken = localStorage.getItem('access_token');
     const tokenCheck = accessToken && (await checkToken(accessToken));
+    console.log(accessToken);
+    console.log(tokenCheck);
 
     if (!accessToken || tokenCheck.error) {
         await localStorage.removeItem("access_token");
