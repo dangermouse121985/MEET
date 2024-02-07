@@ -113,6 +113,14 @@ input[type="number"] {
   font-weight: 600;
 }
 
+.alerts-container {
+  position: fixed;
+  top: 0px;
+  left: 20px;
+  width: 250px;
+  z-index: 1000;
+}
+
 @media only screen and (max-width: 600px) {
   .event {
     padding-right: 20px;

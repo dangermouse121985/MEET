@@ -29,8 +29,7 @@ export const getEvents = async () => {
         return mockData;
     }
 
-    let token = null;
-    token = await getAccessToken();
+    const token = await getAccessToken();
 
     if (token) {
         removeQuery();
@@ -75,8 +74,6 @@ const getToken = async (code) => {
 export const getAccessToken = async () => {
     const accessToken = localStorage.getItem('access_token');
     const tokenCheck = accessToken && (await checkToken(accessToken));
-    console.log(accessToken);
-    console.log(tokenCheck);
 
     if (!accessToken || tokenCheck.error) {
         await localStorage.removeItem("access_token");
