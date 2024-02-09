@@ -6,7 +6,7 @@ import NumberOfEvents from './components/NumberOfEvents';
 import { useEffect, useState } from 'react';
 import { getEvents, extractLocations } from './api';
 import { ReactComponent as Logo } from './images/logo.svg';
-import { InfoAlert, ErrorAlert } from './components/Alert';
+import { InfoAlert, ErrorAlert, WarningAlert } from './components/Alert';
 
 const App = () => {
   const [events, setEvents] = useState([]);
@@ -15,8 +15,17 @@ const App = () => {
   const [currentCity, setCurrentCity] = useState("See all cities");
   const [infoAlert, setInfoAlert] = useState("");
   const [errorAlert, setErrorAlert] = useState("");
+  const [warningAlert, setWarningAlert] = useState("");
 
   useEffect(() => {
+    let errorText;
+    if (!navigator.onLine) {
+      errorText = "You are currently online. No new events will be displayed!";
+    } else {
+      errorText = "";
+    }
+    setWarningAlert(errorText);
+
     fetchData();
   }, [currentCity, currentNOE]);
 
@@ -37,6 +46,7 @@ const App = () => {
       <div className='alerts-container' text={infoAlert}>
         {infoAlert.length ? <InfoAlert text={infoAlert} /> : null}
         {errorAlert.length ? <ErrorAlert text={errorAlert} /> : null}
+        {warningAlert.length ? <WarningAlert text={warningAlert} /> : null}
       </div>
       <CitySearch
         allLocations={allLocations}
