@@ -30,7 +30,7 @@ export const getEvents = async () => {
     }
 
     if (!navigator.onLine) {
-        const events = localStorate.getItem("lastEvents");
+        const events = localStorage.getItem("lastEvents");
         return events ? JSON.parse(events) : [];
     }
     const token = await getAccessToken();
