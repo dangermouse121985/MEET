@@ -28,7 +28,7 @@ const CityEventsChart = ({ allLocations, events }) => {
                 }}
             >
                 <CartesianGrid />
-                <XAxis type="category" dataKey="city" name="City" />
+                <XAxis type="category" dataKey="city" name="CityTest" />
                 <YAxis type="number" dataKey="count" name="Number of Events" allowDecimals={false} />
                 <Tooltip cursor={{ strokeDasharray: '3 3' }} />
                 <Scatter name="A school" data={data} fill="#8884d8" />
