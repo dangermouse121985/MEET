@@ -46,7 +46,7 @@ const EventGenresChart = ({ events }) => {
                 <Pie
                     data={data}
                     dataKey="value"
-                    fil="#8884d8"
+                    fil="#488286"
                     labelLine={false}
                     label={renderCustomizedLabel}
                     outerRadius={130}
