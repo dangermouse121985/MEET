@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { PieChart, Pie, Sector, Cell, ResponsiveContainer, Legend } from "recharts";
+import { PieChart, Pie, Sector, Cell, ResponsiveContainer, Legend, Tooltip } from "recharts";
 
 const EventGenresChart = ({ events }) => {
     const [data, setdata] = useState([]);
@@ -35,7 +35,7 @@ const EventGenresChart = ({ events }) => {
                 textAnchor={x > cx ? 'start' : 'end'}
                 dominantBaseline="central"
             >
-                {`${genres[index]} ${(percent * 100).toFixed(0)}%`}
+                {`${(percent * 100).toFixed(0)}%`}
             </text>
         ) : null;
     };
@@ -48,12 +48,14 @@ const EventGenresChart = ({ events }) => {
                     dataKey="value"
                     labelLine={false}
                     label={renderCustomizedLabel}
-                    outerRadius={110}
+                    outerRadius={130}
                 >
                     {data.map((entry, index) => <Cell key={`cell-${index}`} fill={colors[index]} />)}
                 </Pie>
+                <Tooltip />
+                <Legend />
             </PieChart>
-        </ResponsiveContainer>
+        </ResponsiveContainer >
     )
 }
 
