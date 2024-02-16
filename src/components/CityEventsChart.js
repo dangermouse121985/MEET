@@ -18,7 +18,7 @@ const CityEventsChart = ({ allLocations, events }) => {
     };
 
     return (
-        <ResponsiveContainer width="80%" height={450}>
+        <ResponsiveContainer width="99%" height={450} >
             <ScatterChart
                 margin={{
                     top: 20,
@@ -35,7 +35,7 @@ const CityEventsChart = ({ allLocations, events }) => {
                 <Tooltip cursor={{ strokeDasharray: '3 3' }} />
                 <Scatter name="A school" data={data} fill="#2b3990" />
             </ScatterChart>
-        </ResponsiveContainer>
+        </ResponsiveContainer >
     );
 }
 

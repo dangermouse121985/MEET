@@ -17,9 +17,10 @@ svg {
 }
 
 .App {
+  box-sizing: border-box;
   text-align: center;
   padding: 2% 5%;
-  width: 90%;
+  width: 100%;
   margin: 0 auto;
 }
 
@@ -122,8 +123,13 @@ input[type="number"] {
 }
 
 .charts-container {
+  width: 100%;
   display: grid;
   grid-template-columns: 1fr 1fr;
+}
+
+.recharts-surface {
+  margin: 0;
 }
 
 @media (max-width: 768px) {
@@ -132,7 +138,7 @@ input[type="number"] {
   }
 }
 
-@media only screen and (max-width: 600px) {
+@media (max-width: 600px) {
   .event {
     padding-right: 20px;
   }
