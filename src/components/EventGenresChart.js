@@ -3,7 +3,7 @@ import { PieChart, Pie, Cell, ResponsiveContainer, Legend, Tooltip } from "recha
 
 const EventGenresChart = ({ events }) => {
     const [data, setdata] = useState([]);
-    const genres = ['React', 'JavaScript', 'Node', 'JQuery', 'Angular'];
+    const genres = ['React', 'JavaScript', 'Node', 'jQuery', 'Angular'];
     const colors = ['#2B3990', '#4960A3', '#6686B6', '#F5A65B', '#397367',];
 
     useEffect(() => {
