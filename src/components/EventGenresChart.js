@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { PieChart, Pie, Sector, Cell, ResponsiveContainer, Legend, Tooltip } from "recharts";
+import { PieChart, Pie, Cell, ResponsiveContainer, Legend, Tooltip } from "recharts";
 
 const EventGenresChart = ({ events }) => {
     const [data, setdata] = useState([]);
