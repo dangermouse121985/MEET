@@ -22,7 +22,7 @@ const App = () => {
   useEffect(() => {
     let errorText;
     if (!navigator.onLine) {
-      errorText = "You are currently online. No new events will be displayed!";
+      errorText = "You are currently offline. No new events will be displayed!";
     } else {
       errorText = "";
     }
