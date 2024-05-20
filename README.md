@@ -4,6 +4,37 @@
 
 The meet app is a serverless, progressive web app (PWA) built with React using test-driven development. It will allow user to view Events and their details by specific cities. The application will use the Google Calendar API to fetch upcoming events.
 
+## Table of Contents
+
+1. [Design Criteria](#design-criteria)
+   1. [Feature 1: Filter Events By City](#feature-1-filter-events-by-city)
+      1. [User Story](#user-story-1)
+      2. [Scenario 1: When user hasn’t searched for a city, show upcoming events from all cities](#scenario-1-when-user-hasn’t-searched-for-a-city-show-upcoming-events-from-all-cities)
+      3. [Scenario 2: User should see a list of suggestions when they search for a city](#scenario-2-user-should-see-a-list-of-suggestions-when-they-search-for-a-city)
+      4. [Scenario 3: User can select a city from the suggested list](#scenario-3-user-can-select-a-city-from-the-suggested-list)
+   2. [Feature 2: Show/Hide Event Details](#feature-2-showhide-event-details)
+      1. [User Story](#user-story-2)
+      2. [Scenario 1: An event element is collapsed by default](#scenario-1-an-event-element-is-collapsed-by-default)
+      3. [Scenario 2: User can expand an event to see details](#scenario-2-user-can-expand-an-event-to-see-details)
+      4. [Scenario 3: User can collapse an event to hide details](#scenario-3-user-can-collapse-an-event-to-hide-details)
+   3. [Feature 3: Specify Number of Events](#feature-3-specify-number-of-events)
+      1. [User Story](#user-story-3)
+      2. [Scenario 1: When user hasn’t specified a number, 32 events are shown by default](#scenario-1-when-user-hasn’t-specified-a-number-32-events-are-shown-by-default)
+      3. [Scenario 2: User can change the number of events displayed](#scenario-2-user-can-change-the-number-of-events-displayed)
+   4. [Feature 4: Use the App When Offline](#feature-4-use-the-app-when-offline)
+      1. [User Story](#user-story-4)
+      2. [Scenario 1: Show cached data when there’s no internet connection](#scenario-1-show-cached-data-when-there’s-no-internet-connection)
+      3. [Scenario 2: Show error when user changes search settings (city, number of events)](#scenario-2-show-error-when-user-changes-search-settings-city-number-of-events)
+   5. [Feature 5: Add an App Shortcut to the Home Screen](#feature-5-add-an-app-shortcut-to-the-home-screen)
+      1. [User Story](#user-story-5)
+      2. [Scenario 1: User can install the meet app as a shortcut on their device home screen](#scenario-1-user-can-install-the-meet-app-as-a-shortcut-on-their-device-home-screen)
+   6. [Feature 6: Display Charts Visualizing Event Details](#feature-6-display-charts-visualizing-event-details)
+      1. [User Story](#user-story-6)
+      2. [Scenario 1: Show a chart with the number of upcoming events in each city](#scenario-1-show-a-chart-with-the-number-of-upcoming-events-in-each-city)
+2. [Serverless Functionality](#serverless-functionality)
+
+---
+
 ## Design Criteria
 
 ### Feature 1: Filter Events By City
@@ -135,4 +166,4 @@ The meet app is a serverless, progressive web app (PWA) built with React using t
 
 ## Serverless Functionality
 
-The Meet app will use serverless functions to handle user authorization and provide the access tokens to the user. Use of serverless prevents us from having to maintain an entire server just to provide access tokens. In addition fewer resources will be needed (and lower costs) in the event that we need to scale for a larger number of users.
+The Meet app uses serverless functions to handle user authorization and provides the access tokens to the user. Use of serverless prevents us from having to maintain an entire server just to provide access tokens. In addition fewer resources will be needed (and lower costs) in the event that we need to scale for a larger number of users.
