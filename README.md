@@ -20,17 +20,19 @@ The meet app is a serverless, progressive web app (PWA) built with React using t
     When they haven't entered or searched for a specific city
     Then the app should display upcoming events from all cities
 
-#### Scenario 2: User should see a list of suggestions when they search for a city
+#### Scenario 2: User should see a list of suggestions when they search for a city.
 
-    Given the user has opened the events app
-    When they start searching for a city
-    Then the app should provide a list of suggestions based on the entered search query
+    Given the main page is open
+    When user starts typing in the city textbox
+    Then the user should recieve a list of cities (suggestions) that match what they’ve typed
 
-#### Scenario 3: User can select a city from the suggested list
+#### Scenario 3: User can select a city from the suggested list.
 
-    Given the user has opened the events app and searched for a city
-    When they choose a city from the suggested list
-    Then the app should display upcoming events specific to the selected city
+    Given user was typing “Berlin” in the city textbox
+    And the list of suggested cities is showing
+    When the user selects a city (e.g., “Berlin, Germany”) from the list
+    Then their city should be changed to that city (i.e., “Berlin, Germany”)
+    And the user should receive a list of upcoming events in that city
 
 ### Feature 2: Show/Hide Event Details
 
