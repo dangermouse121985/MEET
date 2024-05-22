@@ -1,37 +1,50 @@
 # Meet App
 
-## Intro
-
-The meet app is a serverless, progressive web app (PWA) built with React using test-driven development. It will allow user to view Events and their details by specific cities. The application will use the Google Calendar API to fetch upcoming events.
-
 ## Table of Contents
 
-1. [Design Criteria](#design-criteria)
-   1. [Feature 1: Filter Events By City](#feature-1-filter-events-by-city)
-      1. [User Story](#user-story-1)
-      2. [Scenario 1: When user hasn’t searched for a city, show upcoming events from all cities](#scenario-1-when-user-hasn’t-searched-for-a-city-show-upcoming-events-from-all-cities)
-      3. [Scenario 2: User should see a list of suggestions when they search for a city](#scenario-2-user-should-see-a-list-of-suggestions-when-they-search-for-a-city)
-      4. [Scenario 3: User can select a city from the suggested list](#scenario-3-user-can-select-a-city-from-the-suggested-list)
-   2. [Feature 2: Show/Hide Event Details](#feature-2-showhide-event-details)
-      1. [User Story](#user-story-2)
-      2. [Scenario 1: An event element is collapsed by default](#scenario-1-an-event-element-is-collapsed-by-default)
-      3. [Scenario 2: User can expand an event to see details](#scenario-2-user-can-expand-an-event-to-see-details)
-      4. [Scenario 3: User can collapse an event to hide details](#scenario-3-user-can-collapse-an-event-to-hide-details)
-   3. [Feature 3: Specify Number of Events](#feature-3-specify-number-of-events)
-      1. [User Story](#user-story-3)
-      2. [Scenario 1: When user hasn’t specified a number, 32 events are shown by default](#scenario-1-when-user-hasn’t-specified-a-number-32-events-are-shown-by-default)
-      3. [Scenario 2: User can change the number of events displayed](#scenario-2-user-can-change-the-number-of-events-displayed)
-   4. [Feature 4: Use the App When Offline](#feature-4-use-the-app-when-offline)
-      1. [User Story](#user-story-4)
-      2. [Scenario 1: Show cached data when there’s no internet connection](#scenario-1-show-cached-data-when-there’s-no-internet-connection)
-      3. [Scenario 2: Show error when user changes search settings (city, number of events)](#scenario-2-show-error-when-user-changes-search-settings-city-number-of-events)
-   5. [Feature 5: Add an App Shortcut to the Home Screen](#feature-5-add-an-app-shortcut-to-the-home-screen)
-      1. [User Story](#user-story-5)
-      2. [Scenario 1: User can install the meet app as a shortcut on their device home screen](#scenario-1-user-can-install-the-meet-app-as-a-shortcut-on-their-device-home-screen)
-   6. [Feature 6: Display Charts Visualizing Event Details](#feature-6-display-charts-visualizing-event-details)
-      1. [User Story](#user-story-6)
-      2. [Scenario 1: Show a chart with the number of upcoming events in each city](#scenario-1-show-a-chart-with-the-number-of-upcoming-events-in-each-city)
-2. [Serverless Functionality](#serverless-functionality)
+1. [Intro](#intro)
+2. [Design Criteria](#design-criteria)
+   - [Feature 1: Filter Events By City](#feature-1-filter-events-by-city)
+     - [User Story](#user-story-1)
+     - [Scenario 1: When user hasn’t searched for a city, show upcoming events from all cities](#scenario-1-when-user-hasn’t-searched-for-a-city-show-upcoming-events-from-all-cities)
+     - [Scenario 2: User should see a list of suggestions when they search for a city](#scenario-2-user-should-see-a-list-of-suggestions-when-they-search-for-a-city)
+     - [Scenario 3: User can select a city from the suggested list](#scenario-3-user-can-select-a-city-from-the-suggested-list)
+   - [Feature 2: Show/Hide Event Details](#feature-2-showhide-event-details)
+     - [User Story](#user-story-2)
+     - [Scenario 1: An event element is collapsed by default](#scenario-1-an-event-element-is-collapsed-by-default)
+     - [Scenario 2: User can expand an event to see details](#scenario-2-user-can-expand-an-event-to-see-details)
+     - [Scenario 3: User can collapse an event to hide details](#scenario-3-user-can-collapse-an-event-to-hide-details)
+   - [Feature 3: Specify Number of Events](#feature-3-specify-number-of-events)
+     - [User Story](#user-story-3)
+     - [Scenario 1: When user hasn’t specified a number, 32 events are shown by default](#scenario-1-when-user-hasn’t-specified-a-number-32-events-are-shown-by-default)
+     - [Scenario 2: User can change the number of events displayed](#scenario-2-user-can-change-the-number-of-events-displayed)
+   - [Feature 4: Use the App When Offline](#feature-4-use-the-app-when-offline)
+     - [User Story](#user-story-4)
+     - [Scenario 1: Show cached data when there’s no internet connection](#scenario-1-show-cached-data-when-there’s-no-internet-connection)
+     - [Scenario 2: Show error when user changes search settings (city, number of events)](#scenario-2-show-error-when-user-changes-search-settings-city-number-of-events)
+   - [Feature 5: Add an App Shortcut to the Home Screen](#feature-5-add-an-app-shortcut-to-the-home-screen)
+     - [User Story](#user-story-5)
+     - [Scenario 1: User can install the meet app as a shortcut on their device home screen](#scenario-1-user-can-install-the-meet-app-as-a-shortcut-on-their-device-home-screen)
+   - [Feature 6: Display Charts Visualizing Event Details](#feature-6-display-charts-visualizing-event-details)
+     - [User Story](#user-story-6)
+     - [Scenario 1: Show a chart with the number of upcoming events in each city](#scenario-1-show-a-chart-with-the-number-of-upcoming-events-in-each-city)
+3. [Serverless Functionality](#serverless-functionality)
+4. [Installation Instructions](#installation-instructions)
+   - [Prerequisites](#prerequisites)
+   - [Steps](#steps)
+     1. [Clone the Repository](#1-clone-the-repository)
+     2. [Install Dependencies](#2-install-dependencies)
+     3. [Create an OAuth Consumer](#3-create-an-oauth-consumer)
+     4. [Setup AWS Lambda](#4-setup-aws-lambda)
+     5. [Create `config.json` File](#5-create-configjson-file)
+     6. [Run the App Locally](#6-run-the-app-locally)
+     7. [Run Tests](#7-run-tests)
+     8. [Build for Production](#8-build-for-production)
+     9. [Deploy to GitHub Pages](#9-deploy-to-github-pages)
+
+## Intro
+
+The meet app is a serverless, progressive web app (PWA) built with React using test-driven development. The app allows user to view events and their details by specific cities. The application will use the Google Calendar API to fetch upcoming events.
 
 ---
 
@@ -166,4 +179,114 @@ The meet app is a serverless, progressive web app (PWA) built with React using t
 
 ## Serverless Functionality
 
-The Meet app uses serverless functions to handle user authorization and provides the access tokens to the user. Use of serverless prevents us from having to maintain an entire server just to provide access tokens. In addition fewer resources will be needed (and lower costs) in the event that we need to scale for a larger number of users.
+The Meet app will use serverless functions to handle user authorization and provide the access tokens to the user. Use of serverless prevents us from having to maintain an entire server just to provide access tokens. In addition fewer resources will be needed (and lower costs) in the event that we need to scale for a larger number of users.
+
+## Installation Instructions
+
+### Prerequisites
+
+- Node.js (version 12 or higher)
+- npm (version 6 or higher)
+
+### Steps
+
+1. **Clone the Repository**
+
+   ```bash
+   git clone https://github.com/dangermouse121985/Meet
+   cd meet-app
+   ```
+
+2. **Install Dependencies**
+
+   ```bash
+   npm install
+   ```
+
+3. **Create an Oauth Consumer**
+
+- Navigate to https://console.developers.google.com/ and create an account if you do not already have one
+- Create a project
+- Enable Google Calendar API in the project you just created
+- Set up your credentials
+  - Select Google Calendar API and User data when prompted for "Which API are you using"
+  - In the OAuth Consent screen, enter the following:
+    - App Name: Meet
+    - User Support email: Your Gmail Address
+    - App logo (not necessary but you may be required to verify the app if you choose to add one)
+    - Developer contact information (your gmail address)
+  - In the scopes screen, enable ".../auth/calendar.events.public.readonly"
+  - On the OAuth Client ID screen, enter the following
+    - Application type: Web application
+    - Name: Meet App
+    - Authorized JavaScript origins: https://YOURGITHUBNAME.github.io (Your hosted app’s domain - rplace "YOURGITHUBNAME" with your GitHub account name)
+    - Authorized redirect URLs: https://YOURGITHUBNAME.github.io/meet/ (Your app’s URI - replace "YOURGITHUBNAME" with your GitHub account name)
+  - Download your credentials. They will be used in step 5
+- Add test users
+  - Enter at lease one gmail address
+
+4. **Setup AWS Lambda**
+
+- In the terminal and within the root directory of the Meet App
+  Create a new serverless service/project using aws-nodejs
+  ```
+  npm install -g serverless # -g flag stands for globally
+  ```
+  Jump into the newly created directory
+  ```
+  cd auth-server
+  ```
+  Then create a package.json
+  ```
+  npm init
+  ```
+- Navigate to https://aws.amazon.com/console/ and create an account if you have not already done so
+- Click on your username and select Security credentials from the dropdown
+- Select Access Keys then click Create New Access Key
+- Download the file and save it in a secury location (You woun't be able to do this again later)
+- in the terminal, configure your new AWS credentials for Serverless.
+  ```
+  serverless config credentials --provider aws --key ACCESS_KEY_ID --secret SECRET_ACCESS_KEY
+  ```
+
+5. **Create `config.json` File**
+   Create a `config.json` file in the auth-server directory of the project and add the following (ensure you ):
+
+   ```config.json
+   {
+        "CLIENT_ID": "your_google_calendar_client-id",
+        "CLIENT_SECRET": "your_google_calendar_client_secret",
+        "CALENDAR_ID": "fullstackwebdev@careerfoundry.com"
+   }
+
+   ```
+
+6. **Run the App Locally**
+
+   ```bash
+   npm start
+   ```
+
+7. **Run Tests**
+   To run all tests:
+
+   ```bash
+   npm test
+   ```
+
+8. **Build for Production**
+
+   ```bash
+   npm run build
+   ```
+
+9. **Deploy to GitHub Pages**
+   If you would like to deploy this app to Github ensure your `homepage` field in `package.json` is set to `https://your-username.github.io/meet-app`.
+
+   ```bash
+   npm run deploy
+   ```
+
+   This will deploy the app to GitHub Pages. Your app should now be accessible at `https://your-username.github.io/meet-app`.
+
+**This file was created using the help of ChatGPT**
